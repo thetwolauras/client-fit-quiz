@@ -1,47 +1,81 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Client Fit Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; }
-        .question { margin-top: 20px; }
-        .response { color: green; font-weight: bold; margin-top: 10px; }
-        .button { margin-top: 10px; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        .question { 
+            margin-top: 20px; 
+            font-size: 16px; 
+            font-weight: 700;
+        }
+        .response { 
+            color: red; 
+            font-weight: bold; 
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .button { 
+            margin-top: 10px; 
+        }
+        .answer-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 400;
+            color: black;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+            margin-top: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .answer-button:hover {
+            background-color: #f0f0f0;
+        }
+        #quiz {
+            max-width: 600px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
-
 
     <h1>Client Fit Quiz</h1>
     <div id="quiz">
         <div class="question" id="question1">
             <p>1. Is this a current client?</p>
-            <button onclick="answerQuestion(1, 'yes')">Yes</button>
-            <button onclick="answerQuestion(1, 'no')">No</button>
+            <div class="answer-button" onclick="answerQuestion(1, 'yes')">Yes</div>
+            <div class="answer-button" onclick="answerQuestion(1, 'no')">No</div>
         </div>
     </div>
     <div id="response" class="response"></div>
-
 
     <script>
         let currentClient = false;
         let fourFigureBudget = false;
 
-
         function answerQuestion(question, answer) {
             const quizDiv = document.getElementById("quiz");
             const responseDiv = document.getElementById("response");
-
 
             if (question === 1) {
                 currentClient = (answer === 'yes');
                 quizDiv.innerHTML = `
                     <div class="question" id="question2">
                         <p>2. ${currentClient ? "Are they paying you 4-figures?" : "Do they have a minimum 4-figure budget to cover the cost of content, campaigns, and your services?"}</p>
-                        <button onclick="answerQuestion(2, 'yes')">Yes</button>
-                        <button onclick="answerQuestion(2, 'no')">No</button>
+                        <div class="answer-button" onclick="answerQuestion(2, 'yes')">Yes</div>
+                        <div class="answer-button" onclick="answerQuestion(2, 'no')">No</div>
                     </div>
                 `;
             } else if (question === 2) {
@@ -54,8 +88,8 @@
                     quizDiv.innerHTML = `
                         <div class="question" id="question3">
                             <p>3. Are they on a platform you want to work on?</p>
-                            <button onclick="answerQuestion(3, 'yes')">Yes</button>
-                            <button onclick="answerQuestion(3, 'no')">No</button>
+                            <div class="answer-button" onclick="answerQuestion(3, 'yes')">Yes</div>
+                            <div class="answer-button" onclick="answerQuestion(3, 'no')">No</div>
                         </div>
                     `;
                 }
@@ -66,15 +100,15 @@
                     quizDiv.innerHTML = currentClient ? `
                         <div class="question" id="question4">
                             <p>4. Do they have access to their accounts?</p>
-                            <button onclick="answerQuestion(4, 'yes')">Yes</button>
-                            <button onclick="answerQuestion(4, 'no')">No</button>
-                            <button onclick="answerQuestion(4, 'not sure')">Not Sure</button>
+                            <div class="answer-button" onclick="answerQuestion(4, 'yes')">Yes</div>
+                            <div class="answer-button" onclick="answerQuestion(4, 'no')">No</div>
+                            <div class="answer-button" onclick="answerQuestion(4, 'not sure')">Not Sure</div>
                         </div>
                     ` : `
                         <div class="question" id="question5">
                             <p>5. Is this client in a niche, sector, or industry you know well and/or want to work in?</p>
-                            <button onclick="answerQuestion(5, 'yes')">Yes</button>
-                            <button onclick="answerQuestion(5, 'no')">No</button>
+                            <div class="answer-button" onclick="answerQuestion(5, 'yes')">Yes</div>
+                            <div class="answer-button" onclick="answerQuestion(5, 'no')">No</div>
                         </div>
                     `;
                 }
@@ -85,8 +119,8 @@
                     quizDiv.innerHTML = `
                         <div class="question" id="question5">
                             <p>5. Is this client in a niche, sector, or industry you know well and/or want to work in?</p>
-                            <button onclick="answerQuestion(5, 'yes')">Yes</button>
-                            <button onclick="answerQuestion(5, 'no')">No</button>
+                            <div class="answer-button" onclick="answerQuestion(5, 'yes')">Yes</div>
+                            <div class="answer-button" onclick="answerQuestion(5, 'no')">No</div>
                         </div>
                     `;
                 }
@@ -97,8 +131,8 @@
                     quizDiv.innerHTML = `
                         <div class="question" id="question6">
                             <p>6. Does the client’s business have a proven concept?</p>
-                            <button onclick="answerQuestion(6, 'yes')">Yes</button>
-                            <button onclick="answerQuestion(6, 'no')">No</button>
+                            <div class="answer-button" onclick="answerQuestion(6, 'yes')">Yes</div>
+                            <div class="answer-button" onclick="answerQuestion(6, 'no')">No</div>
                         </div>
                     `;
                 }
@@ -109,8 +143,8 @@
                     quizDiv.innerHTML = `
                         <div class="question" id="question7">
                             <p>7. Is it easy and simple for a potential customer to buy from them or become a lead on their website? If not, does the company have systems in place to handle leads and sales easily?</p>
-                            <button onclick="answerQuestion(7, 'yes')">Yes</button>
-                            <button onclick="answerQuestion(7, 'no')">No</button>
+                            <div class="answer-button" onclick="answerQuestion(7, 'yes')">Yes</div>
+                            <div class="answer-button" onclick="answerQuestion(7, 'no')">No</div>
                         </div>
                     `;
                 }
@@ -121,8 +155,8 @@
                     quizDiv.innerHTML = `
                         <div class="question" id="question8">
                             <p>8. Do they have existing assets for content or a budget to get it?</p>
-                            <button onclick="answerQuestion(8, 'yes')">Yes</button>
-                            <button onclick="answerQuestion(8, 'no')">No</button>
+                            <div class="answer-button" onclick="answerQuestion(8, 'yes')">Yes</div>
+                            <div class="answer-button" onclick="answerQuestion(8, 'no')">No</div>
                         </div>
                     `;
                 }
@@ -133,8 +167,8 @@
                     quizDiv.innerHTML = `
                         <div class="question" id="question9">
                             <p>9. Are their goals realistic and achievable based on their budget, content, and overall setup?</p>
-                            <button onclick="answerQuestion(9, 'yes')">Yes</button>
-                            <button onclick="answerQuestion(9, 'no')">No</button>
+                            <div class="answer-button" onclick="answerQuestion(9, 'yes')">Yes</div>
+                            <div class="answer-button" onclick="answerQuestion(9, 'no')">No</div>
                         </div>
                     `;
                 }
@@ -147,3 +181,4 @@
     </script>
 </body>
 </html>
+
